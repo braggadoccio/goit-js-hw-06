@@ -3,13 +3,14 @@ signInForm.addEventListener("submit", handleSubmit);
 
 function handleSubmit(event) {
   event.preventDefault();
-  const form = event.target;
-  const email = form.elements.email.value;
-  const password = form.elements.password.value;
+  const {
+    elements: { email, password },
+  } = event.currentTarget;
+  console.dir(event.currentTarget);
 
-  if (email === "" || password === "") {
+  if (email.value === "" || password.value === "") {
     return console.log("All fields must be filled in!");
   }
   console.log(`email: ${email.value}, Password: ${password.value}`);
-  form.reset();
+  event.currentTarget.reset();
 }
